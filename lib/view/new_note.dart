@@ -12,58 +12,42 @@ class NewNote extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add New Note'),
+        backgroundColor: Colors.black,
+        toolbarHeight: 60,
+        elevation: 0,
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.check))],
       ),
-      body: SingleChildScrollView(
-        child: SizedBox(
-          child: Column(
-            children: [
-              Card(
-                  margin: const EdgeInsets.only(top: 50, left: 20, right: 20),
-                  elevation: 10,
-                  child: Column(
-                    children: [
-                      TextField(
-                          controller: titleContr,
-                          onSubmitted: (val) {
-                            if (val != "") {
-                              noteFocus.requestFocus();
-                            }
-                          },
-                          autofocus: true,
-                          style: const TextStyle(fontSize: 20),
-                          decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(left: 10),
-                              hintText: "Title")),
-                      const Divider(
-                        thickness: 0.1,
-                        color: Colors.grey,
-                      ),
-                      SizedBox(
-                        height: 500,
-                        width: double.maxFinite,
-                        child: TextField(
-                            controller: contentContr,
-                            focusNode: noteFocus,
-                            maxLines: null,
-                            decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                contentPadding:
-                                    EdgeInsets.only(left: 10, top: 15),
-                                hintText: "Content")),
-                      ),
-                    ],
-                  )),
-              const SizedBox(
-                height: 40,
-              ),
-              SizedBox(
-                width: 200,
-                child:
-                    ElevatedButton(onPressed: () {}, child: const Text("Add")),
-              )
-            ],
-          ),
+      body: Container(
+        color: Colors.black,
+        child: Column(
+          children: [
+            TextField(
+                controller: titleContr,
+                onSubmitted: (val) {
+                  if (val != "") {
+                    noteFocus.requestFocus();
+                  }
+                },
+                autofocus: true,
+                style: const TextStyle(fontSize: 20, color: Colors.white),
+                decoration: const InputDecoration(
+                    hintStyle: TextStyle(color: Colors.white),
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.only(left: 10),
+                    hintText: "Title")),
+            Expanded(
+              child: TextField(
+                  controller: contentContr,
+                  focusNode: noteFocus,
+                  maxLines: null,
+                  style: const TextStyle(fontSize: 20, color: Colors.white),
+                  decoration: const InputDecoration(
+                      hintStyle: TextStyle(color: Colors.white),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.only(left: 10, top: 15),
+                      hintText: "Type Something....")),
+            ),
+          ],
         ),
       ),
     );

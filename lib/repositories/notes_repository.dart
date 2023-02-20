@@ -17,4 +17,8 @@ class NotesRepository {
       throw Exception("error");
     }
   }
+
+  void addNotes() async {
+    await http.post(Uri.parse("${api.baseUrl}/notes/add"));
+  }
 }
